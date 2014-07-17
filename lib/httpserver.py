@@ -28,7 +28,7 @@ class RootHandler(resource.Resource):
         )
 
         request.setResponseCode(200 if self.results['all_ok'] else 500)
-        request.setHeader('server', 'HealthCheckReporter')
+        request.setHeader('server', 'HealthReporter')
 
         return str(rendered_data)
 
