@@ -1,0 +1,5 @@
+bind_address: 0.0.0.0
+bind_port: 2020
+pretty_json: true
+sleep_time: 10
+scripts_path: /tmp/scripts

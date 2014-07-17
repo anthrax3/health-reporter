@@ -1,0 +1,22 @@
+#!/usr/bin/env python
+
+# Local application modules
+import lib.helpers as helpers
+from lib.httpserver import run_server
+from lib.workers import HealthCheckRunner
+
+# Load the config in the YAML files
+config = helpers.load_config()
+
+# Create a dict to store health check results
+results = {
+    'all_ok': True,
+    'last_check': None,
+    'check_data': {'pass': [], 'fail': []},
+}
+
+# Create the thread to handle checking and start it
+HealthCheckRunner(config, results).start()
+
+# Create the HTTP server
+run_server(results, config)
