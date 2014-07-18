@@ -1,20 +1,22 @@
-#for $result in $results['check_data']['fail']
-<h1>
-    #if $result.return_code == 0
-        <span style="color: green">PASS</span>: ${result.script}
-    #else
-        <span style="color: red">FAIL</span>: ${result.script}
-    #end if
-</h1>
-<textarea style="font-family:monospace; height:250px; width: 800px">${result.output}</textarea>
-#end for
-#for $result in $results['check_data']['pass']
-<h1>
-    #if $result.return_code == 0
-        <span style="color: green">PASS</span>: ${result.script}
-    #else
-        <span style="color: red">FAIL</span>: ${result.script}
-    #end if
-</h1>
-<textarea style="font-family:monospace; height:250px; width: 800px">${result.output}</textarea>
-#end for
+<body style="font-family: sans-serif">
+    #for $result in $results['check_data']['fail']
+        <h2>
+            #if $result.return_code == 0
+                <span style="color: green">PASS</span>: ${result.script}
+            #else
+                <span style="color: red">FAIL</span>: ${result.script}
+            #end if
+        </h2>
+        <textarea style="font-family:monospace; height:250px; width: 800px">${result.output}</textarea>
+    #end for
+    #for $result in $results['check_data']['pass']
+        <h2>
+            #if $result.return_code == 0
+                <span style="color: green">PASS</span>: ${result.script}
+            #else
+                <span style="color: red">FAIL</span>: ${result.script}
+            #end if
+        </h2>
+        <textarea style="font-family:monospace; height:250px; width: 800px">${result.output}</textarea>
+    #end for
+</body>
