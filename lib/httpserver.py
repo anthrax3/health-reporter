@@ -3,8 +3,8 @@ import os
 
 # 3rd party modules
 from Cheetah.Template import Template
-from twisted.web import server, resource
 from twisted.internet import reactor
+from twisted.web import server, resource
 
 
 class RootHandler(resource.Resource):
