@@ -18,11 +18,20 @@ class HealthCheckRunner(threading.Thread):
             new_check_data = {'pass': [], 'fail': []}
 
             for script in os.listdir(self.config['scripts_path']):
-                child = subprocess.Popen(
-                    [os.path.join(self.config['scripts_path'], script)],
-                    stdout=subprocess.PIPE,
-                    stderr=subprocess.PIPE,
-                )
+                try:
+                    child = subprocess.Popen(
+                        [os.path.join(self.config['scripts_path'], script)],
+                        stdout=subprocess.PIPE,
+                        stderr=subprocess.PIPE,
+                    )
+                except:
+                    new_status = False
+                    new_check_data['fail'].append({
+                        'script': os.path.join(self.config['scripts_path'], script),
+                        'return_code': None,
+                        'output': '<Script failed to execute>',
+                    })
+                    continue
 
                 stdout, stderr = child.communicate()
                 return_code = child.returncode
