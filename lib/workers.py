@@ -29,7 +29,7 @@ class HealthCheckRunner(threading.Thread):
                     new_check_data['fail'].append({
                         'script': os.path.join(self.config['scripts_path'], script),
                         'return_code': None,
-                        'output': 'Script failed to execute: ' + e.message,
+                        'output': 'Script failed to execute: ' + e.strerror,
                     })
                     continue
 
